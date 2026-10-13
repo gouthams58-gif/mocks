@@ -1,0 +1,69 @@
+<proxyConfiguration xmlVersion="5" productVersion="0">
+ <ProxyConfiguration className="com.parasoft.stub.proxy.ProxyConfiguration" version="1.3.3">
+  <lastModifiedBy>anonymous</lastModifiedBy>
+  <id>1b574246-7bea-47e8-b2d8-388f12005849-1790328001398</id>
+  <proxies size="1">
+   <MQProxyConnection className="com.parasoft.stub.proxy.MQProxyConnection" index="0" version="1.1.5">
+    <name>MQAUT</name>
+    <append>true</append>
+    <file>recorded_traffic\%n_%d_%t.txt</file>
+    <host>localhost</host>
+    <port>1414</port>
+    <MQProxySettings className="com.parasoft.net.mq.MQProxySettings" version="1.4.2">
+     <MQConnectionSettings className="com.parasoft.net.mq.MQConnectionSettings" version="1.3.2">
+      <password>AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=</password>
+      <username>goutham</username>
+      <MQManagerSettings className="com.parasoft.net.mq.MQManagerSettings" version="1.5">
+       <sslCipherSuite>null</sslCipherSuite>
+       <sslPeerName>null</sslPeerName>
+       <sslKeyStoreType>null</sslKeyStoreType>
+       <sslKeyStorePassword>AA==</sslKeyStorePassword>
+       <sslTrustStoreType>null</sslTrustStoreType>
+       <sslTrustStorePassword>AA==</sslTrustStorePassword>
+       <ccdtFile>null</ccdtFile>
+       <username>goutham</username>
+       <password>AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=</password>
+       <name>QM1</name>
+       <host>localhost</host>
+       <channel>MY.CLIENT.CHANNEL</channel>
+       <id>null</id>
+      </MQManagerSettings>
+      <MQSharedSettings className="com.parasoft.net.mq.MQSharedSettings" version="1.1">
+       <putManagerId>b9f61b74-65f6-43d4-8988-b25a0a58b9aa-1770375400274</putManagerId>
+       <getManagerId>b9f61b74-65f6-43d4-8988-b25a0a58b9aa-1770375400274</getManagerId>
+      </MQSharedSettings>
+      <useReplyTo>true</useReplyTo>
+      <putQueue>VIRTUAL.QUEUE1</putQueue>
+      <getQueue>TEST.PROXY.QUEUE2</getQueue>
+     </MQConnectionSettings>
+     <MQConnectionSettings className="com.parasoft.net.mq.MQConnectionSettings" version="1.3.2">
+      <password>AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=</password>
+      <username>goutham</username>
+      <MQManagerSettings className="com.parasoft.net.mq.MQManagerSettings" version="1.5">
+       <sslCipherSuite>null</sslCipherSuite>
+       <sslPeerName>null</sslPeerName>
+       <sslKeyStoreType>null</sslKeyStoreType>
+       <sslKeyStorePassword>AA==</sslKeyStorePassword>
+       <sslTrustStoreType>null</sslTrustStoreType>
+       <sslTrustStorePassword>AA==</sslTrustStorePassword>
+       <ccdtFile>null</ccdtFile>
+       <username>goutham</username>
+       <password>AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=</password>
+       <name>QM1</name>
+       <host>localhost</host>
+       <channel>MY.CLIENT.CHANNEL</channel>
+       <id>null</id>
+      </MQManagerSettings>
+      <MQSharedSettings className="com.parasoft.net.mq.MQSharedSettings" version="1.1">
+       <putManagerId>b9f61b74-65f6-43d4-8988-b25a0a58b9aa-1770375400274</putManagerId>
+       <getManagerId>b9f61b74-65f6-43d4-8988-b25a0a58b9aa-1770375400274</getManagerId>
+      </MQSharedSettings>
+      <useReplyTo>true</useReplyTo>
+      <putQueue>TEST.PROXY.QUEUE1</putQueue>
+      <getQueue>VIRTUAL.QUEUE2</getQueue>
+     </MQConnectionSettings>
+    </MQProxySettings>
+   </MQProxyConnection>
+  </proxies>
+ </ProxyConfiguration>
+</proxyConfiguration>

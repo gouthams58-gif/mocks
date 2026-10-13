@@ -1,0 +1,514 @@
+---
+parasoftVersion: 2025.3.0
+productVersion: 10.7.4
+schemaVersion: 11
+suite:
+  $type: TestSuite
+  name: new_DL
+  lastModifiedBy: greddy
+  performance:
+    groups:
+    - id: 1
+      name: new_DL
+  dataSources:
+  - id: ds_1773724637072_1467715048
+    impl:
+      $type: Repository
+      cacheEnabled: false
+      dataSetName: getAccount
+      config:
+        $type: MongoDataRepositoryConfiguration
+        secure: "true"
+        id: null
+        host: localhost
+        port: 2424
+        db: GET_NEW
+        username: AwAAABh5dVk5bkR2SlJ3Y1VkRVUxN1F4bEhRPT0=
+        password: AwAAABh5dVk5bkR2SlJ3Y1VkRVUxN1F4bEhRPT0=
+    name: getAccount
+    useAllRows: true
+    lastRow: -1
+  tests:
+  - $type: ClientTesterTest
+    name: getAccount
+    testID: 1
+    performanceGroup: 1
+    tool:
+      $type: MessageResponder
+      dataSourceNames:
+      - getAccount
+      iconName: TestClient
+      name: getAccount
+      scpKeys:
+      - name: conversationID
+        value:
+          fixedValue:
+            $type: StringTestValue
+      wsaKeys:
+      - name: MessageID
+        value:
+          values:
+          - $type: MessageIDTestValue
+          fixedValue:
+            $type: StringTestValue
+      preRequestHeader:
+        $type: NamedToolOutputProvider
+        menuName: Transport Header
+        name: Pre-correlation Incoming Transport Header
+      xmlPreRequestOutput:
+        $type: NamedXMLToolOutputProvider
+        menuName: Payload
+        name: Pre-correlation Incoming Request
+      preRequestAttachmentOutputProvider:
+        menuName: Attachment
+        name: Pre-correlation Incoming Attachment
+      jmsOutputProvider:
+        $type: JMSOutputProvider
+        name: Incoming JMS Message
+        menuName: Incoming JMS Message
+      attachmentOutputProvider:
+        menuName: Attachment
+        name: Incoming Attachment
+      requestHeader:
+        $type: NamedToolOutputProvider
+        menuName: Transport Header
+        name: Incoming Transport Header
+      responseHeader:
+        $type: NamedToolOutputProvider
+        menuName: Transport Header
+        name: Outgoing Transport Header
+      xmlResponseOutput:
+        $type: ResponderXMLToolOutputProvider
+        menuName: Payload
+        name: Outgoing Response
+      trafficObjectOutput:
+        $type: ObjectOutputProvider
+        name: Traffic Object
+      protocol: 6
+      mode: 1
+      timeout: 30
+      dsXmlCorrelations:
+      - $type: XMLDataSourceCorrelation
+        xPathExpressions:
+        - "/*[local-name(.)=\"Envelope\"]/*[local-name(.)=\"Body\"]/*[local-name(.)=\"\
+          getAccount\"]/*[local-name(.)=\"accountId\"]"
+        columnName: accountId
+      fileResponderExcludes:
+        properties:
+        - $type: StringNameValuePair
+          name: '*'
+          value:
+            fixedValue:
+              $type: StringTestValue
+              value: "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]{1,3})?(([+-][0-9]{2}:[0-9]{2})|Z)?"
+          string: ""
+      fileResponderCacheUUID: 42a54797-6f98-4603-96c6-f6c1cdb6bc34
+      incomingConversionDelegate:
+        conversionOptions:
+          options:
+          - normalizeSpace
+          - "false"
+      poxFormInputValue:
+        value:
+          $type: ElementValue
+          writeType: true
+          type:
+            $type: ElementType
+            bodyType:
+              $type: ComplexType
+              namespace: ""
+              name: anonymous
+              compositor: true
+              compositorObj:
+                $type: SequenceCompositor
+          replacedColumn: ""
+          values:
+          - $type: ComplexValue
+            replacedColumn: ""
+            compositorValue: true
+            compositorValueObj:
+              replacedColumn: ""
+              values:
+                $type: CompositorValueSetCollectionSet
+                set:
+                - $type: CompositorValueSet
+      messageForwardProvider:
+        $type: MessageForwardOutputProvider
+        menuName: Traffic
+        name: Traffic
+      clientTesterSoapCall: true
+      soapCall:
+        $type: ClientTesterSoapCall
+        soapMethod: true
+        soapMethodObj:
+          soapParameters:
+          - value:
+              $type: ElementValue
+              writeType: true
+              type:
+                $type: ElementType
+                namespace: http://service.parabank.parasoft.com/
+                localName: getAccountResponse
+                bodyType:
+                  $type: ComplexType
+                  namespace: http://service.parabank.parasoft.com/
+                  name: getAccountResponseType
+                  compositor: true
+                  compositorObj:
+                    $type: SequenceCompositor
+                    types:
+                    - $type: ElementType
+                      namespace: http://service.parabank.parasoft.com/
+                      localName: account
+                      bodyType:
+                        $type: ComplexType
+                        namespace: http://service.parabank.parasoft.com/
+                        name: accountType
+                        compositor: true
+                        compositorObj:
+                          $type: SequenceCompositor
+                          types:
+                          - $type: ElementType
+                            localName: id
+                            bodyType:
+                              $type: StringType
+                              _id: 1
+                          - $type: ElementType
+                            localName: customerId
+                            bodyType:
+                              $type: StringType
+                              _ref: 1
+                          - $type: ElementType
+                            localName: type
+                            bodyType:
+                              $type: StringType
+                              _ref: 1
+                          - $type: ElementType
+                            localName: balance
+                            bodyType:
+                              $type: StringType
+                              _ref: 1
+              replacedColumn: ""
+              values:
+              - $type: ComplexValue
+                replacedColumn: ""
+                compositorValue: true
+                compositorValueObj:
+                  replacedColumn: ""
+                  values:
+                    $type: CompositorValueSetCollectionSet
+                    set:
+                    - $type: CompositorValueSet
+                      values:
+                      - $type: ElementValue
+                        replacedColumn: ""
+                        mode: 3
+                        columnName: account
+                        values:
+                        - $type: ComplexValue
+                          replacedColumn: ""
+                          compositorValue: true
+                          compositorValueObj:
+                            replacedColumn: ""
+                            values:
+                              $type: CompositorValueSetCollectionSet
+                              set:
+                              - $type: CompositorValueSet
+                                values:
+                                - $type: ElementValue
+                                  replacedColumn: ""
+                                  values:
+                                  - $type: StringValue
+                                    replacedColumn: ""
+                                    mode: 3
+                                    columnName: id
+                                    value: ""
+                                - $type: ElementValue
+                                  replacedColumn: ""
+                                  values:
+                                  - $type: StringValue
+                                    replacedColumn: ""
+                                    mode: 3
+                                    columnName: customerId
+                                    value: ""
+                                - $type: ElementValue
+                                  replacedColumn: ""
+                                  values:
+                                  - $type: StringValue
+                                    replacedColumn: ""
+                                    mode: 3
+                                    columnName: type
+                                    value: ""
+                                - $type: ElementValue
+                                  replacedColumn: ""
+                                  values:
+                                  - $type: StringValue
+                                    replacedColumn: ""
+                                    mode: 3
+                                    columnName: balance
+                                    value: ""
+            name: ""
+          beautify: false
+          longName: getAccount
+          styleUseProperties:
+            targetObjectURI: http://schema
+          serviceAddress:
+            $type: SOAPServiceAddress
+            address: ""
+          methodName: getAccount
+        inputMode: 1
+        formJsonResource:
+          httpMethod: GET
+        formJson:
+          value:
+            $type: ElementValue
+            writeType: true
+            type:
+              $type: ElementType
+              localName: root
+              bodyType:
+                $type: ComplexType
+                attributes:
+                - ns: ""
+                  name: type
+                  fixed: object
+                  contentType:
+                    $type: StringType
+                  required: true
+                name: rootType
+                compositor: true
+                compositorObj:
+                  $type: AllCompositor
+            replacedColumn: ""
+            values:
+            - $type: ComplexValue
+              replacedColumn: ""
+              attributes:
+              - replacedColumn: ""
+                value:
+                  $type: StringValue
+                  replacedColumn: ""
+                  value: object
+                useValue: true
+              compositorValue: true
+              compositorValueObj:
+                replacedColumn: ""
+                values:
+                  $type: CompositorValueSetCollectionSet
+                  set:
+                  - $type: CompositorValueSet
+          elementTypeName: root
+        jsonBuilder:
+          hasValue: true
+          value:
+            $type: JSONObjectValue
+            nameIsNull: true
+      customCorrelationCondition:
+        $type: UserMethodCorrelationCondition
+        enableCorrelation: false
+      correlationConditionSet:
+        conditions:
+        - false
+        - $type: HttpMethodsCorrelationCondition
+          enableCorrelation: false
+          matchList: ""
+        - false
+        - $type: UrlPathCorrelationCondition
+          enableCorrelation: false
+          resourcePath: ""
+        - false
+        - $type: UrlParamCorrelationCondition
+          enableCorrelation: false
+        - false
+        - $type: HeaderCorrelationCondition
+          enableCorrelation: false
+        - false
+        - $type: XMLMessageCorrelationCondition
+          xPathExpressions:
+          - "local-name(/*/*[local-name(.)=\"Body\"]/*)=\"getAccount\""
+      serviceOptions:
+        requestDateTemplate:
+          string: 2026-03-10T14:55:43.000+0530
+        requestURLTemplate:
+          string: /parabank/services/ParaBank
+        failoverOptions:
+          bool: true
+        responseHeaderTemplate:
+          template: ""
+        requestHeaderTemplate:
+          response: false
+          template: ""
+        requestMessageTemplate:
+          response: false
+          template: |
+            <?xml version="1.0" encoding="UTF-8"?>
+            <SOAP-ENV:Envelope xmlns=""
+                xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <SOAP-ENV:Body>
+                    <getAccount xmlns="http://service.parabank.parasoft.com/">
+                        <accountId>13011</accountId>
+                    </getAccount>
+                </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+        responseMessageTemplate:
+          template: ""
+        stubHeaderProperties:
+          headers:
+          - $type: StubHTTPHeader
+            headers:
+              properties:
+              - name: Content-Type
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+                    value: text/xml;charset=UTF-8
+              - name: Keep-Alive
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+                    value: timeout=60
+          - $type: StubJMSHeader
+          - $type: StubMQHeader
+            mqrfh2fields:
+              version:
+                name: Version
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              encoding:
+                name: Encoding
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              codedCharSetId:
+                name: CodedCharSetId
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              format:
+                name: Format
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              flags:
+                name: Flags
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              nameValueCodedCharSetId:
+                name: NameValueCodedCharSetId
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+            mcd:
+              msd:
+                name: Message Service Domain
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              set:
+                name: Message Set
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              type:
+                name: Message Type
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              fmt:
+                name: Output Format
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+            psc:
+              subIdentity:
+                name: SubIdentity
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              qName:
+                name: QName
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              qMgrName:
+                name: QMgrName
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              subPoint:
+                name: SubPoint
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              filter:
+                name: Filter
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              subName:
+                name: SubName
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              subUserData:
+                name: SubUserData
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+            jms:
+              destination:
+                name: Destination
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              replyTo:
+                name: Reply To
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              timestamp:
+                name: Timestamp
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              expiration:
+                name: Expiration
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              correlationId:
+                name: Correlation Id
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              priority:
+                name: Priority
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              deliveryMode:
+                name: Delivery Mode
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+        msgPattern:
+          bool: true
+        returnStatusOptions:
+          returnStatus:
+            name: ""
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: 500
+        timeOptions:
+          thinkTime:
+            name: ""
+            value:
+              values:
+              - $type: ScriptedValue
+              fixedValue:
+                $type: StringTestValue
+                value: 0

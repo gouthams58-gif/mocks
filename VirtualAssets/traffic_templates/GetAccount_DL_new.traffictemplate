@@ -1,0 +1,72 @@
+---
+parasoftVersion: 2025.3.0
+productVersion: 10.7.4
+schemaVersion: 10
+trafficTemplate:
+  constrainedToDefinition: false
+  hasChangedNames: true
+  hasNewIdentities: true
+  hasDataRepositoryConfiguration: true
+  repo:
+    $type: Repository
+    cacheEnabled: false
+    config:
+      $type: MongoDataRepositoryConfiguration
+      secure: "true"
+      host: localhost
+      port: 2424
+      db: GetAccount_DL_new
+      username: AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=
+      password: AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=
+  hasProtocol: true
+  protocol: HTTP
+  hasGroupingStrategyId: true
+  groupingStrategyId: GROUP_BY_OPERATIONS
+  hasOperationsGroupingStrategy: true
+  operationsGroupingStrategies:
+  - REQUEST_BODY
+  hasInvocationGroupTemplate: true
+  invocationGroupTemplates:
+  - responderMode: CORRELATED
+    inferConstraintsType: NONE
+    xpathIgnoresValueRegex:
+    - "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]{1,3})?(([+-][0-9]{2}:[0-9]{2})|Z)?"
+    xpathIgnoresElementNames:
+    - '*'
+    dsCorrEnabled: true
+    hasHeaderSettings: true
+    name: getAccount
+    dataSetName: getAccount
+    hasEvaluators: true
+    evaluators:
+      correlationConditionSet:
+        conditions:
+        - false
+        - $type: HttpMethodsCorrelationCondition
+          enableCorrelation: false
+          matchList: ""
+        - false
+        - $type: UrlPathCorrelationCondition
+          enableCorrelation: false
+          resourcePath: ""
+        - false
+        - $type: UrlParamCorrelationCondition
+          enableCorrelation: false
+        - false
+        - $type: HeaderCorrelationCondition
+          enableCorrelation: false
+        - false
+        - $type: XMLMessageCorrelationCondition
+          xPathExpressions:
+          - "local-name(/*/*[local-name(.)=\"Body\"]/*)=\"getAccount\""
+    hasXpathSettings: true
+    xpathSettings:
+    - $type: InvocationGroupSettings_XpathSetting
+      xpathColumnName: accountId
+      xpath: "/*[local-name(.)=\"Envelope\"]/*[local-name(.)=\"Body\"]/*[local-name(.)=\"\
+        getAccount\"]/*[local-name(.)=\"accountId\"]"
+    hasUrlParamSettings: true
+    hasUrlPathSettings: true
+    wsdlSchemaType: WSDL
+    wsdlSchemaUrl: ""
+    dataSetImportType: UPDATE

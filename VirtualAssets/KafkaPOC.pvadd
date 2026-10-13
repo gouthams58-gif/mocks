@@ -1,0 +1,20 @@
+<stub version="1" id="15b6f8a5-13a0-42d9-9c22-d755f32c4e3a-1774516586160" enabled="false" description="" lastModifiedBy="greddy" location="KafkaPOC.pva" path="/KafkaPOC"><jms providerURL="" initialContext="" useReplyTo="false" type="Publish-and-Subscribe" messageSelector="" queueConnectionFactory="" destinationQueue="" replyToQueue="" topicConnectionFactory="" publishTopic="" subscribeTopic="" username="" password="" workerCount="1">
+<jmsProperties>
+</jmsProperties>
+<jmsSharedSettings xmlVersion="5" productVersion="0">
+ <JMSSharedSettings className="com.parasoft.net.jms.JMSSharedSettings" version="1.1">
+  <putConnectionId>null</putConnectionId>
+  <getConnectionId>null</getConnectionId>
+ </JMSSharedSettings>
+</jmsSharedSettings></jms><mq queueManager="QM1" channel="" putQueue="test.Queue" getQueue="test.Queue1" mq_host="localhost" applicationIdData="" mq_port="1414" useReplyTo="false" username="greddy" password="AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=" ccdtFile="" settingsMode="default" useSSL="false" sslCipherSuite="" sslPeerName="" sslKeyStoreLocation="" sslKeyStoreType="" sslKeyStorePassword="AA==" sslTrustAll="false" sslTrustStoreLocation="" sslTrustStoreType="" sslTrustStorePassword="AA==" workerCount="1"><mqSharedSettings xmlVersion="5" productVersion="0">
+ <MQSharedSettings className="com.parasoft.net.mq.MQSharedSettings" version="1.1">
+  <putManagerId>Local Settings</putManagerId>
+  <getManagerId>Local Settings</getManagerId>
+ </MQSharedSettings>
+</mqSharedSettings></mq><custom selected="-1"></custom><performanceConfiguration xmlVersion="5" productVersion="0">
+ <StubPerformanceConfiguration className="com.parasoft.stub.deployment.StubPerformanceConfiguration" version="1.2">
+ </StubPerformanceConfiguration>
+</performanceConfiguration><dataGroupsConfigurations xmlVersion="5" productVersion="0">
+ <StubDataGroupsConfiguration className="com.parasoft.stub.deployment.StubDataGroupsConfiguration" version="1.2">
+ </StubDataGroupsConfiguration>
+</dataGroupsConfigurations></stub>

@@ -1,0 +1,1960 @@
+---
+parasoftVersion: 2025.2.0
+productVersion: 10.7.3
+schemaVersion: 8
+suite:
+  $type: TestSuite
+  name: Responder Suite
+  hasEnvironmentConfig: true
+  lastModifiedBy: brajagopal
+  browserOptions:
+    browserType:
+      useDefault: false
+      type:
+        $type: CompositeBrowserType
+        browserTypes:
+        - $type: SingleBrowserType
+          typeValue: 0
+        - $type: SingleBrowserType
+          typeValue: 3
+  dataSources:
+  - id: ds_1413352817_1729233648153_824875602
+    impl:
+      $type: TableDataSource
+      model:
+        columnIdentifiers:
+        - STAN
+        - Response
+        rows:
+        - - 123456
+          - 5420209002462826
+        - - 123457
+          - 5430209002462826
+          - null
+          - '                                                       '
+        - - 123458
+          - 5440209002462826
+          - null
+          - '                                                       '
+        - - 123459
+          - 5450209002462826
+        - - 123460
+          - 5450209002462826
+        - - 123461
+          - 5460209002462826
+        - - 123462
+          - 5470209002462826
+        - - 123463
+          - 5480209002462826
+        - - 123464
+          - 5490209002462826
+        - - 123465
+          - 5500209002462826
+        - - 123466
+          - 5510209002462826
+        - - 123467
+          - 5520209002462826
+        - - 123468
+          - 5530209002462826
+        - - 123469
+          - 5540209002462826
+        - - 123470
+          - 5550209002462826
+        - - 123471
+          - 5560209002462826
+        - - 123472
+          - 5570209002462826
+        - - 123473
+          - 5580209002462826
+        - - 123474
+          - 5590209002462826
+        - - 123475
+          - 5600209002462826
+    name: ResponseDatasource
+    useAllRows: true
+  tests:
+  - $type: ClientTesterTest
+    name: ISO 8583 Message Responder 2
+    testID: 37
+    tool:
+      $type: TextXmlConverterMessageResponder
+      dataSourceNames:
+      - ResponseDatasource
+      iconName: TestClient
+      name: ISO 8583 Message Responder 2
+      preRequestTextOutputProvider:
+        $type: NamedToolOutputProvider
+        menuName: Payload
+        name: Pre-correlation Incoming Request
+      preRequestXmlOutputProvider:
+        $type: NamedXMLToolOutputProvider
+        menuName: Payload Converted to XML
+        name: Pre-correlation Incoming Request Converted to XML
+      incomingConversionDelegate:
+        conversionOptions:
+          options:
+          - normalizeSpace
+          - "false"
+      messageResponder:
+        $type: MessageResponder
+        dataSourceNames:
+        - ResponseDatasource
+        iconName: TestClient
+        name: Message Stub
+        properties:
+        - $type: JNDIProperties
+          msgExpiration:
+            $type: JMSMessageExpiration
+          bytesMessageReadMethod:
+            string: readUTF()
+          responseCorrelation:
+            correlationId:
+              name: JMSCorrelationID
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+            messageSelector: ""
+          queueProperties:
+            jmsDestination:
+              name: JMSDestination
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+            jmsReplyTo:
+              name: JMSReplyTo
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: JMS_ResponseQueue
+          msgType:
+            string: javax.jms.TextMessage
+          useP2P:
+            bool: true
+          connProperties:
+            jmsFactory:
+              name: Connection Factory
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: MQ_JMS_MANAGER
+            jndiFactory:
+              name: Initial Context
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: com.sun.jndi.fscontext.RefFSContextFactory
+            providerURL:
+              name: Provider URL
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: file:/C:/JNDI-Directory
+            auth:
+              service:
+                name: Service
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              username:
+                name: Username
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              password:
+                name: Password
+                value:
+                  fixedValue:
+                    $type: PasswordTestValue
+          useSync: true
+        - $type: SonicMQJNDIProperties
+          msgExpiration:
+            $type: JMSMessageExpiration
+          bytesMessageReadMethod:
+            string: readUTF()
+          responseCorrelation:
+            correlationId:
+              name: JMSCorrelationID
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+            messageSelector: ""
+          queueProperties:
+            jmsDestination:
+              name: JMSDestination
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+            jmsReplyTo:
+              name: JMSReplyTo
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: JMS_ResponseQueue
+          msgType:
+            string: progress.message.jclient.MultipartMessage
+          useP2P:
+            bool: true
+          connProperties:
+            initialContextProps:
+            - name: java.naming.security.credentials
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: Administrator
+            - name: java.naming.security.principal
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: Administrator
+            jmsFactory:
+              name: Connection Factory
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: ConnectionFactory
+            jndiFactory:
+              name: Initial Context
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: com.sonicsw.jndi.mfcontext.MFContextFactory
+            providerURL:
+              name: Provider URL
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: "tcp://[hostname]:2506"
+            auth:
+              service:
+                name: Service
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              username:
+                name: Username
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+                    value: Administrator
+              password:
+                name: Password
+                value:
+                  fixedValue:
+                    $type: PasswordTestValue
+          useSync: true
+          partContentID:
+            string: part1
+        - $type: TIBCOProperties
+          keepAlive: true
+          listenOnly: true
+          timeLimit:
+            name: Time Limit
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: 0
+          inbox: false
+          service:
+            name: ""
+            value:
+              fixedValue:
+                $type: StringTestValue
+          network:
+            name: ""
+            value:
+              fixedValue:
+                $type: StringTestValue
+          daemon:
+            name: DAEMON
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: DAEMON
+          sendSubject:
+            name: Send Subject
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: Send Subject
+          replySubject:
+            name: Reply Field Name
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: Reply Field Name
+          sendFieldName:
+            name: Send Field Name
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: Send Field Name
+          replyFieldName:
+            name: Reply Field Name
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: Reply Field Name
+        - $type: MQProperties
+          mqrfh2fields:
+            version:
+              name: Version
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            encoding:
+              name: Encoding
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            codedCharSetId:
+              name: CodedCharSetId
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            format:
+              name: Format
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            flags:
+              name: Flags
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            nameValueCodedCharSetId:
+              name: NameValueCodedCharSetId
+              value:
+                fixedValue:
+                  $type: StringTestValue
+          mcd:
+            msd:
+              name: Message Service Domain
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            set:
+              name: Message Set
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            type:
+              name: Message Type
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            fmt:
+              name: Output Format
+              value:
+                fixedValue:
+                  $type: StringTestValue
+          psc:
+            subIdentity:
+              name: SubIdentity
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            qName:
+              name: QName
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            qMgrName:
+              name: QMgrName
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            subPoint:
+              name: SubPoint
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            filter:
+              name: Filter
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            subName:
+              name: SubName
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            subUserData:
+              name: SubUserData
+              value:
+                fixedValue:
+                  $type: StringTestValue
+          jms:
+            destination:
+              name: Destination
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            replyTo:
+              name: Reply To
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            timestamp:
+              name: Timestamp
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            expiration:
+              name: Expiration
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            correlationId:
+              name: Correlation Id
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            priority:
+              name: Priority
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            deliveryMode:
+              name: Delivery Mode
+              value:
+                fixedValue:
+                  $type: StringTestValue
+          mqQueueManager:
+            ccsid:
+              name: CCSID
+              value:
+                fixedValue:
+                  $type: StringTestValue
+          listenOnly: true
+          mqSSL:
+            peerName:
+              name: Peer Name
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            cipherSuite:
+              $type: EnumNameValuePair
+              name: CipherSuite
+              value:
+                fixedValue:
+                  $type: StringTestValue
+          conn:
+            keepAliveConnection: false
+            putManagerId:
+              name: Put Manager Id
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            getManagerId:
+              name: Get Manager Id
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            listenOnly: true
+            channel:
+              name: Channel
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: CHANNEL1
+            host:
+              name: Host
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: host
+            port:
+              name: Port
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: 1414
+            manager:
+              name: Queue Manager
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: queue.manager.1
+            putQueue:
+              name: Put Queue
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: PutQueue
+            getQueue:
+              name: Get Queue
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: GetQueue
+            auth:
+              service:
+                name: Service
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              username:
+                name: Username
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              password:
+                name: Password
+                value:
+                  fixedValue:
+                    $type: PasswordTestValue
+          mqpmMisc:
+            applicationIdData:
+              name: Application ID data
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            correlationID:
+              name: Correlation ID
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            expiry:
+              name: Expiry (in tenths of a second)
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: -1
+            messageSequenceNumber:
+              name: Message sequence number
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            replyToQueueManagerName:
+              name: Reply queue manager name
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            replyToQueueName:
+              name: Reply queue name
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            putApplicationName:
+              name: Put application name
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            applicationOriginData:
+              name: Originating application data
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            userId:
+              name: User ID
+              value:
+                fixedValue:
+                  $type: StringTestValue
+          mqgmMisc:
+            correlationID:
+              name: Correlation Id
+              value:
+                fixedValue:
+                  $type: StringTestValue
+            waitInterval:
+              name: Wait Interval(in milliseconds)
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: -1
+        scpKeys:
+        - name: conversationID
+          value:
+            fixedValue:
+              $type: StringTestValue
+        wsaKeys:
+        - name: MessageID
+          value:
+            values:
+            - $type: MessageIDTestValue
+            fixedValue:
+              $type: StringTestValue
+        customKeys:
+        - name: "/*/*/*/*[local-name(.)=\"sessionID\"]"
+          value:
+            fixedValue:
+              $type: StringTestValue
+        - name: "/*/*/*/*[local-name(.)=\"requestNumber\"]"
+          value:
+            fixedValue:
+              $type: StringTestValue
+        outputTools:
+        - $type: Redirector
+        preRequestHeader:
+          $type: NamedToolOutputProvider
+          menuName: Transport Header
+          name: Pre-correlation Incoming Transport Header
+        xmlPreRequestOutput:
+          $type: NamedXMLToolOutputProvider
+          outputTools:
+          - $type: Redirector
+          menuName: Payload
+          name: Pre-correlation Incoming Request
+        preRequestAttachmentOutputProvider:
+          menuName: Attachment
+          name: Pre-correlation Incoming Attachment
+        jmsOutputProvider:
+          $type: JMSOutputProvider
+          name: Incoming JMS Message
+          menuName: Incoming JMS Message
+        attachmentOutputProvider:
+          menuName: Attachment
+          name: Incoming Attachment
+        requestHeader:
+          $type: NamedToolOutputProvider
+          menuName: Transport Header
+          name: Incoming Transport Header
+        responseHeader:
+          $type: NamedToolOutputProvider
+          menuName: Transport Header
+          name: Outgoing Transport Header
+        xmlResponseOutput:
+          $type: ResponderXMLToolOutputProvider
+          outputTools:
+          - $type: Redirector
+          menuName: Payload
+          name: Outgoing Response
+        trafficObjectOutput:
+          $type: ObjectOutputProvider
+          name: Traffic Object
+        protocol: 6
+        mode: 1
+        timeout: 30
+        graphqlEnableSelectionSet: false
+        fileResponderExcludes:
+          properties:
+          - $type: StringNameValuePair
+            name: '*'
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]{1,3})?(([+-][0-9]{2}:[0-9]{2})|Z)?"
+            string: ""
+        fileResponderCacheUUID: 3b666247-742d-4689-ab0d-c39a4a091c5c
+        definitionType: 2
+        incomingConversionDelegate:
+          conversionOptions:
+            options:
+            - normalizeSpace
+            - "false"
+          isCorrelationConverterEnabled: false
+        poxFormInputValue:
+          value:
+            $type: ElementValue
+            writeType: true
+            type:
+              $type: ElementType
+              localName: isomsg
+              bodyType:
+                $type: ComplexType
+                _id: 1
+                attributes:
+                - ns: ""
+                  name: id
+                  contentType:
+                    $type: StringType
+                    _id: 2
+                namespace: urn:parasoft:empty:namespace
+                name: isomsgType
+                compositor: true
+                compositorObj:
+                  $type: SequenceCompositor
+                  types:
+                  - $type: ElementType
+                    minOccurs: 0
+                    maxOccurs: -1
+                    localName: field
+                    bodyType:
+                      $type: ComplexType
+                      attributes:
+                      - ns: ""
+                        name: id
+                        contentType:
+                          $type: StringType
+                          _ref: 2
+                        required: true
+                      - ns: ""
+                        name: value
+                        contentType:
+                          $type: StringType
+                          _id: 3
+                        required: true
+                      content: true
+                      contentObj:
+                        $type: StringType
+                        _ref: 3
+                      namespace: urn:parasoft:empty:namespace
+                      name: fieldType
+                  - $type: ElementType
+                    minOccurs: 0
+                    maxOccurs: -1
+                    localName: isomsg
+                    bodyType:
+                      $type: ComplexType
+                      _ref: 1
+            replacedColumn: ""
+            values:
+            - $type: ComplexValue
+              replacedColumn: ""
+              attributes:
+              - replacedColumn: ""
+                value:
+                  $type: StringValue
+                  replacedColumn: ""
+                  value: ""
+              compositorValue: true
+              compositorValueObj:
+                replacedColumn: ""
+                values:
+                  $type: CompositorValueSetCollectionSet
+                  set:
+                  - $type: CompositorValueSet
+                    values:
+                    - $type: ElementValue
+                      replacedColumn: ""
+                      values:
+                      - $type: ComplexValue
+                        replacedColumn: ""
+                        allowArrayExclude: true
+                        attributes:
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: 127
+                          useValue: true
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: '1452200000378050314\u0009\u0009                                                       '
+                          useValue: true
+                        contentValue: true
+                        contentValueObj:
+                          $type: StringValue
+                          replacedColumn: ""
+                          value: ""
+                      - $type: ComplexValue
+                        replacedColumn: ""
+                        allowArrayExclude: true
+                        attributes:
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: 39
+                          useValue: true
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: '00'
+                          useValue: true
+                        contentValue: true
+                        contentValueObj:
+                          $type: StringValue
+                          replacedColumn: ""
+                          value: ""
+                      - $type: ComplexValue
+                        replacedColumn: ""
+                        allowArrayExclude: true
+                        attributes:
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: 13
+                          useValue: true
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: 1121
+                          useValue: true
+                        contentValue: true
+                        contentValueObj:
+                          $type: StringValue
+                          replacedColumn: ""
+                          value: ""
+                      - $type: ComplexValue
+                        replacedColumn: ""
+                        allowArrayExclude: true
+                        attributes:
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: 14
+                          useValue: true
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: 1312
+                          useValue: true
+                        contentValue: true
+                        contentValueObj:
+                          $type: StringValue
+                          replacedColumn: ""
+                          value: ""
+                      - $type: ComplexValue
+                        replacedColumn: ""
+                        allowArrayExclude: true
+                        attributes:
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: ""
+                          useValue: true
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: ""
+                          useValue: true
+                        contentValue: true
+                        contentValueObj:
+                          $type: StringValue
+                          replacedColumn: ""
+                          value: ""
+                      - $type: ComplexValue
+                        replacedColumn: ""
+                        allowArrayExclude: true
+                        attributes:
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: ""
+                          useValue: true
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: ""
+                          useValue: true
+                        contentValue: true
+                        contentValueObj:
+                          $type: StringValue
+                          replacedColumn: ""
+                          value: ""
+                    - $type: ElementValue
+                      replacedColumn: ""
+                      values:
+                      - $type: ComplexValue
+                        replacedColumn: ""
+                        allowArrayExclude: true
+                        attributes:
+                        - replacedColumn: ""
+                          value:
+                            $type: StringValue
+                            replacedColumn: ""
+                            value: 63
+                          useValue: true
+                        compositorValue: true
+                        compositorValueObj:
+                          replacedColumn: ""
+                          values:
+                            $type: CompositorValueSetCollectionSet
+                            set:
+                            - $type: CompositorValueSet
+                              values:
+                              - $type: ElementValue
+                                replacedColumn: ""
+                                values:
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: 0
+                                    useValue: true
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: '00'
+                                    useValue: true
+                                  contentValue: true
+                                  contentValueObj:
+                                    $type: StringValue
+                                    replacedColumn: ""
+                                    value: ""
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: 1
+                                    useValue: true
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: '         '
+                                    useValue: true
+                                  contentValue: true
+                                  contentValueObj:
+                                    $type: StringValue
+                                    replacedColumn: ""
+                                    value: ""
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: 2
+                                    useValue: true
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: '00'
+                                    useValue: true
+                                  contentValue: true
+                                  contentValueObj:
+                                    $type: StringValue
+                                    replacedColumn: ""
+                                    value: ""
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: ""
+                                    useValue: true
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: ""
+                                    useValue: true
+                                  contentValue: true
+                                  contentValueObj:
+                                    $type: StringValue
+                                    replacedColumn: ""
+                                    value: ""
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: ""
+                                    useValue: true
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: ""
+                                    useValue: true
+                                  contentValue: true
+                                  contentValueObj:
+                                    $type: StringValue
+                                    replacedColumn: ""
+                                    value: ""
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: ""
+                                    useValue: true
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: ""
+                                    useValue: true
+                                  contentValue: true
+                                  contentValueObj:
+                                    $type: StringValue
+                                    replacedColumn: ""
+                                    value: ""
+                              - $type: ElementValue
+                                replacedColumn: ""
+                                values:
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: 92
+                                    useValue: true
+                                  compositorValue: true
+                                  compositorValueObj:
+                                    replacedColumn: ""
+                                    values:
+                                      $type: CompositorValueSetCollectionSet
+                                      set:
+                                      - $type: CompositorValueSet
+                                        values:
+                                        - $type: ElementValue
+                                          replacedColumn: ""
+                                          values:
+                                          - $type: ComplexValue
+                                            replacedColumn: ""
+                                            allowArrayExclude: true
+                                            attributes:
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 0
+                                              useValue: true
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 92
+                                              useValue: true
+                                            contentValue: true
+                                            contentValueObj:
+                                              $type: StringValue
+                                              replacedColumn: ""
+                                              value: ""
+                                          - $type: ComplexValue
+                                            replacedColumn: ""
+                                            allowArrayExclude: true
+                                            attributes:
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 1
+                                              useValue: true
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: '822   '
+                                              useValue: true
+                                            contentValue: true
+                                            contentValueObj:
+                                              $type: StringValue
+                                              replacedColumn: ""
+                                              value: ""
+                                        - $type: ElementValue
+                                          replacedColumn: ""
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: 93
+                                    useValue: true
+                                  compositorValue: true
+                                  compositorValueObj:
+                                    replacedColumn: ""
+                                    values:
+                                      $type: CompositorValueSetCollectionSet
+                                      set:
+                                      - $type: CompositorValueSet
+                                        values:
+                                        - $type: ElementValue
+                                          replacedColumn: ""
+                                          values:
+                                          - $type: ComplexValue
+                                            replacedColumn: ""
+                                            allowArrayExclude: true
+                                            attributes:
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 0
+                                              useValue: true
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 40
+                                              useValue: true
+                                            contentValue: true
+                                            contentValueObj:
+                                              $type: StringValue
+                                              replacedColumn: ""
+                                              value: ""
+                                          - $type: ComplexValue
+                                            replacedColumn: ""
+                                            allowArrayExclude: true
+                                            attributes:
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 1
+                                              useValue: true
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: '          PER   '
+                                              useValue: true
+                                            contentValue: true
+                                            contentValueObj:
+                                              $type: StringValue
+                                              replacedColumn: ""
+                                              value: ""
+                                        - $type: ElementValue
+                                          replacedColumn: ""
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: 94
+                                    useValue: true
+                                  compositorValue: true
+                                  compositorValueObj:
+                                    replacedColumn: ""
+                                    values:
+                                      $type: CompositorValueSetCollectionSet
+                                      set:
+                                      - $type: CompositorValueSet
+                                        values:
+                                        - $type: ElementValue
+                                          replacedColumn: ""
+                                          values:
+                                          - $type: ComplexValue
+                                            replacedColumn: ""
+                                            allowArrayExclude: true
+                                            attributes:
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 0
+                                              useValue: true
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 42
+                                              useValue: true
+                                            contentValue: true
+                                            contentValueObj:
+                                              $type: StringValue
+                                              replacedColumn: ""
+                                              value: ""
+                                          - $type: ComplexValue
+                                            replacedColumn: ""
+                                            allowArrayExclude: true
+                                            attributes:
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 1
+                                              useValue: true
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: '0103910'
+                                              useValue: true
+                                            contentValue: true
+                                            contentValueObj:
+                                              $type: StringValue
+                                              replacedColumn: ""
+                                              value: ""
+                                        - $type: ElementValue
+                                          replacedColumn: ""
+                                - $type: ComplexValue
+                                  replacedColumn: ""
+                                  allowArrayExclude: true
+                                  attributes:
+                                  - replacedColumn: ""
+                                    value:
+                                      $type: StringValue
+                                      replacedColumn: ""
+                                      value: 95
+                                    useValue: true
+                                  compositorValue: true
+                                  compositorValueObj:
+                                    replacedColumn: ""
+                                    values:
+                                      $type: CompositorValueSetCollectionSet
+                                      set:
+                                      - $type: CompositorValueSet
+                                        values:
+                                        - $type: ElementValue
+                                          replacedColumn: ""
+                                          values:
+                                          - $type: ComplexValue
+                                            replacedColumn: ""
+                                            allowArrayExclude: true
+                                            attributes:
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 0
+                                              useValue: true
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 99
+                                              useValue: true
+                                            contentValue: true
+                                            contentValueObj:
+                                              $type: StringValue
+                                              replacedColumn: ""
+                                              value: ""
+                                          - $type: ComplexValue
+                                            replacedColumn: ""
+                                            allowArrayExclude: true
+                                            attributes:
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: 1
+                                              useValue: true
+                                            - replacedColumn: ""
+                                              value:
+                                                $type: StringValue
+                                                replacedColumn: ""
+                                                value: ORD416346597
+                                              useValue: true
+                                            contentValue: true
+                                            contentValueObj:
+                                              $type: StringValue
+                                              replacedColumn: ""
+                                              value: ""
+                                        - $type: ElementValue
+                                          replacedColumn: ""
+          elementTypeName: isomsg
+        responseMessageType: Plain XML
+        messageForwardProvider:
+          $type: MessageForwardOutputProvider
+          menuName: Traffic
+          name: Traffic
+        clientTesterSoapCall: true
+        soapCall:
+          $type: ClientTesterSoapCall
+          soapMethod: true
+          soapMethodObj:
+            serviceAddress:
+              $type: SOAPServiceAddress
+              address: ""
+          inputMode: 1
+          inputUsable: true
+          literal:
+            use: 1
+            text:
+              ClientTester_LiteralMessage: "0110F23C00000E0180020000000000000002165420209002462826003000000000001000112111290200000011290211211312PV1121058059T527810005392822\
+                \   40          PER   420701039109912ORD416346597604012          \
+                \  1452200000378050314\t\t                                       \
+                \                "
+              type: application/octet-stream
+            dataSource:
+              columnName: C
+          userMethod: true
+          xmlBuilder: true
+          formXML:
+            rootNodeExists: true
+            doctype: ""
+            rootNode:
+              $type: XMLElementNode
+              excludeColumnName: C
+              value: ""
+              name: isomsg
+              showAttributes: true
+              childNodes:
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 0
+                  name: id
+                - $type: XMLAttributeNode
+                  value: '0110'
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 2
+                  name: id
+                - $type: XMLAttributeNode
+                  valueSelection: 2
+                  excludeColumnName: C
+                  valueColumnName: Response
+                  value: 5420209002462826
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: isomsg
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 3
+                  name: id
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 0
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: '00'
+                    name: value
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 1
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: 30
+                    name: value
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 2
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: '00'
+                    name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 4
+                  name: id
+                - $type: XMLAttributeNode
+                  value: '000000001000'
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: isomsg
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 7
+                  name: id
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 0
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: 1121
+                    name: value
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 1
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: 112902
+                    name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 11
+                  name: id
+                - $type: XMLAttributeNode
+                  value: '000000'
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 12
+                  name: id
+                - $type: XMLAttributeNode
+                  value: 112902
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 13
+                  name: id
+                - $type: XMLAttributeNode
+                  value: 1121
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 14
+                  name: id
+                - $type: XMLAttributeNode
+                  value: 1312
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: isomsg
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 37
+                  name: id
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 0
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: PV11210
+                    name: value
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 1
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: 58059
+                    name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 38
+                  name: id
+                - $type: XMLAttributeNode
+                  value: T52781
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 39
+                  name: id
+                - $type: XMLAttributeNode
+                  value: '00'
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: isomsg
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 48
+                  name: id
+                - $type: XMLElementNode
+                  value: ""
+                  name: isomsg
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 92
+                    name: id
+                  - $type: XMLElementNode
+                    value: ""
+                    name: field
+                    showAttributes: true
+                    childNodes:
+                    - $type: XMLAttributeNode
+                      value: 0
+                      name: id
+                    - $type: XMLAttributeNode
+                      value: 92
+                      name: value
+                  - $type: XMLElementNode
+                    value: ""
+                    name: field
+                    showAttributes: true
+                    childNodes:
+                    - $type: XMLAttributeNode
+                      value: 1
+                      name: id
+                    - $type: XMLAttributeNode
+                      value: '822   '
+                      name: value
+                - $type: XMLElementNode
+                  value: ""
+                  name: isomsg
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 93
+                    name: id
+                  - $type: XMLElementNode
+                    value: ""
+                    name: field
+                    showAttributes: true
+                    childNodes:
+                    - $type: XMLAttributeNode
+                      value: 0
+                      name: id
+                    - $type: XMLAttributeNode
+                      value: 40
+                      name: value
+                  - $type: XMLElementNode
+                    value: ""
+                    name: field
+                    showAttributes: true
+                    childNodes:
+                    - $type: XMLAttributeNode
+                      value: 1
+                      name: id
+                    - $type: XMLAttributeNode
+                      value: '          PER   '
+                      name: value
+                - $type: XMLElementNode
+                  value: ""
+                  name: isomsg
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 94
+                    name: id
+                  - $type: XMLElementNode
+                    value: ""
+                    name: field
+                    showAttributes: true
+                    childNodes:
+                    - $type: XMLAttributeNode
+                      value: 0
+                      name: id
+                    - $type: XMLAttributeNode
+                      value: 42
+                      name: value
+                  - $type: XMLElementNode
+                    value: ""
+                    name: field
+                    showAttributes: true
+                    childNodes:
+                    - $type: XMLAttributeNode
+                      value: 1
+                      name: id
+                    - $type: XMLAttributeNode
+                      value: '0103910'
+                      name: value
+                - $type: XMLElementNode
+                  value: ""
+                  name: isomsg
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 95
+                    name: id
+                  - $type: XMLElementNode
+                    value: ""
+                    name: field
+                    showAttributes: true
+                    childNodes:
+                    - $type: XMLAttributeNode
+                      value: 0
+                      name: id
+                    - $type: XMLAttributeNode
+                      value: 99
+                      name: value
+                  - $type: XMLElementNode
+                    value: ""
+                    name: field
+                    showAttributes: true
+                    childNodes:
+                    - $type: XMLAttributeNode
+                      value: 1
+                      name: id
+                    - $type: XMLAttributeNode
+                      value: ORD416346597
+                      name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 49
+                  name: id
+                - $type: XMLAttributeNode
+                  value: 604
+                  name: value
+              - $type: XMLElementNode
+                value: ""
+                name: isomsg
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 63
+                  name: id
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 0
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: '   '
+                    name: value
+                - $type: XMLElementNode
+                  value: ""
+                  name: field
+                  showAttributes: true
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: 1
+                    name: id
+                  - $type: XMLAttributeNode
+                    value: '         '
+                    name: value
+              - $type: XMLElementNode
+                value: ""
+                name: field
+                showAttributes: true
+                childNodes:
+                - $type: XMLAttributeNode
+                  value: 127
+                  name: id
+                - $type: XMLAttributeNode
+                  value: '1452200000378050314\u0009\u0009                                                       '
+                  name: value
+          formJsonResource:
+            httpMethod: GET
+          formJson:
+            value:
+              $type: ElementValue
+              writeType: true
+              type:
+                $type: ElementType
+                localName: root
+                bodyType:
+                  $type: ComplexType
+                  attributes:
+                  - ns: ""
+                    name: type
+                    fixed: object
+                    contentType:
+                      $type: StringType
+                    required: true
+                  name: rootType
+                  compositor: true
+                  compositorObj:
+                    $type: AllCompositor
+              replacedColumn: ""
+              values:
+              - $type: ComplexValue
+                replacedColumn: ""
+                attributes:
+                - replacedColumn: ""
+                  value:
+                    $type: StringValue
+                    replacedColumn: ""
+                    value: object
+                    xmlEncoding: 2
+                  useValue: true
+                compositorValue: true
+                compositorValueObj:
+                  replacedColumn: ""
+                  values:
+                    $type: CompositorValueSetCollectionSet
+                    set:
+                    - $type: CompositorValueSet
+            elementTypeName: root
+          jsonBuilder:
+            hasValue: true
+            value:
+              $type: JSONObjectValue
+              nameIsNull: true
+        customCorrelationCondition:
+          $type: UserMethodCorrelationCondition
+          enableCorrelation: false
+        correlationConditionSet:
+          conditions:
+          - false
+          - $type: HttpMethodsCorrelationCondition
+            enableCorrelation: false
+            matchList: ""
+          - false
+          - $type: UrlPathCorrelationCondition
+            enableCorrelation: false
+          - false
+          - $type: UrlParamCorrelationCondition
+            enableCorrelation: false
+          - false
+          - $type: HeaderCorrelationCondition
+            enableCorrelation: false
+          - false
+          - $type: XMLMessageCorrelationCondition
+            enableCorrelation: false
+        refreshSchema: true
+        serviceOptions:
+          responseHeaderTemplate:
+            template: ""
+          requestHeaderTemplate:
+            response: false
+            template: ""
+          requestMessageTemplate:
+            response: false
+            template: |-
+              <?xml version="1.0" encoding="UTF-8"?>
+              <isomsg>
+               <field id="0" value="800"/>
+               <isomsg id="7">
+                <field id="0" value="1234"/>
+                <field id="1" value="567890"/>
+               </isomsg>
+               <field id="11" value="123475"/>
+               <field id="70" value="301"/>
+              </isomsg>
+          responseMessageTemplate:
+            template: ""
+          stubHeaderProperties:
+            headers:
+            - $type: StubHTTPHeader
+              headers:
+                properties:
+                - name: SERVER
+                  value:
+                    values:
+                    - $type: ScriptedValue
+                    fixedValue:
+                      $type: StringTestValue
+                      value: PARASOFT SV SERVER
+            - $type: StubJMSHeader
+            - $type: StubMQHeader
+              mqrfh2fields:
+                version:
+                  name: Version
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                encoding:
+                  name: Encoding
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                codedCharSetId:
+                  name: CodedCharSetId
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                format:
+                  name: Format
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                flags:
+                  name: Flags
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                nameValueCodedCharSetId:
+                  name: NameValueCodedCharSetId
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+              mcd:
+                msd:
+                  name: Message Service Domain
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                set:
+                  name: Message Set
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                type:
+                  name: Message Type
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                fmt:
+                  name: Output Format
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+              psc:
+                subIdentity:
+                  name: SubIdentity
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                qName:
+                  name: QName
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                qMgrName:
+                  name: QMgrName
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                subPoint:
+                  name: SubPoint
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                filter:
+                  name: Filter
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                subName:
+                  name: SubName
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                subUserData:
+                  name: SubUserData
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+              jms:
+                destination:
+                  name: Destination
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                replyTo:
+                  name: Reply To
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                timestamp:
+                  name: Timestamp
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                expiration:
+                  name: Expiration
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                correlationId:
+                  name: Correlation Id
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                priority:
+                  name: Priority
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+                deliveryMode:
+                  name: Delivery Mode
+                  value:
+                    fixedValue:
+                      $type: StringTestValue
+          msgPattern:
+            bool: true
+          returnStatusOptions:
+            skipProxyFailover: false
+            returnStatus:
+              name: ""
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: 500
+          timeOptions:
+            thinkTime:
+              name: ""
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: 0
+      conversionStrategy:
+        dataFormatName: ISO 8583
+        conversionStrategyId: ISO 8583
+        conversionStrategyClassName: com.parasoft.extension.message.CustomXMLConversionStrategy
+      responseConvertPayloadOption: DO_NOT_CONVERT
+      requestTextOutputProvider:
+        $type: NamedToolOutputProvider
+        menuName: Payload
+        name: Incoming Request
+      requestXmlOutputProvider:
+        $type: NamedXMLToolOutputProvider
+        menuName: Payload Converted to XML
+        name: Incoming Request Converted to XML
+      responseTextOutputProvider:
+        $type: NamedToolOutputProvider
+        menuName: Payload
+        name: Outgoing Response
+      responseXmlOutputProvider:
+        $type: NamedXMLToolOutputProvider
+        menuName: Payload Modeled as XML
+        name: Outgoing Response Modeled as XML

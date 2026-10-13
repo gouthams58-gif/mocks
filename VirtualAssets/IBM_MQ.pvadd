@@ -1,0 +1,20 @@
+<stub version="1" id="184a0c2e-d302-4838-9a97-b179d390db0c-1770353991902" enabled="true" description="" lastModifiedBy="greddy" location="IBM_MQ.pva" path="/jms"><jms providerURL="" initialContext="" useReplyTo="false" type="Publish-and-Subscribe" messageSelector="" queueConnectionFactory="" destinationQueue="" replyToQueue="" topicConnectionFactory="" publishTopic="" subscribeTopic="" username="" password="" workerCount="1">
+<jmsProperties>
+</jmsProperties>
+<jmsSharedSettings xmlVersion="5" productVersion="0">
+ <JMSSharedSettings className="com.parasoft.net.jms.JMSSharedSettings" version="1.1">
+  <putConnectionId>null</putConnectionId>
+  <getConnectionId>null</getConnectionId>
+ </JMSSharedSettings>
+</jmsSharedSettings></jms><mq queueManager="QM1" channel="MY.CLIENT.CHANNEL" putQueue="TEST.QUEUE1" getQueue="TEST.QUEUE2" mq_host="localhost" applicationIdData="" mq_port="1414" useReplyTo="true" username="goutham" password="AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=" ccdtFile="" settingsMode="default" useSSL="false" sslCipherSuite="" sslPeerName="" sslKeyStoreLocation="" sslKeyStoreType="" sslKeyStorePassword="AA==" sslTrustAll="false" sslTrustStoreLocation="" sslTrustStoreType="" sslTrustStorePassword="AA==" workerCount="1"><mqSharedSettings xmlVersion="5" productVersion="0">
+ <MQSharedSettings className="com.parasoft.net.mq.MQSharedSettings" version="1.1">
+  <putManagerId>b9f61b74-65f6-43d4-8988-b25a0a58b9aa-1770375400274</putManagerId>
+  <getManagerId>b9f61b74-65f6-43d4-8988-b25a0a58b9aa-1770375400274</getManagerId>
+ </MQSharedSettings>
+</mqSharedSettings></mq><custom selected="0"><listener className="com.parasoft.virtualize.listener.iso8583.JPOSListener" name="ISO 8583 Message Listener" version="0"><field id="channel_name" value=""/><field id="headerLength" value=""/><field id="host" value=""/><field id="packager_name" value=""/><field id="packager_path" value=""/><field id="port" value=""/><field id="timeout" value=""/></listener></custom><performanceConfiguration xmlVersion="5" productVersion="0">
+ <StubPerformanceConfiguration className="com.parasoft.stub.deployment.StubPerformanceConfiguration" version="1.2">
+ </StubPerformanceConfiguration>
+</performanceConfiguration><dataGroupsConfigurations xmlVersion="5" productVersion="0">
+ <StubDataGroupsConfiguration className="com.parasoft.stub.deployment.StubDataGroupsConfiguration" version="1.2">
+ </StubDataGroupsConfiguration>
+</dataGroupsConfigurations></stub>

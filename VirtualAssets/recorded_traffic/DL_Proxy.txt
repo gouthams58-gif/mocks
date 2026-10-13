@@ -1,0 +1,64 @@
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary=OgE9YsTdtrIzvEgpBrH2OWiHnqcn1w
+Traffic-Format-Version: 1
+Protocol-Id: http-v1
+
+--OgE9YsTdtrIzvEgpBrH2OWiHnqcn1w
+Content-Type: text/plain; charset=UTF-8
+Dest-Address: localhost:10443
+Secure: true
+Source-Address: 127.0.0.1:61950
+Timestamp: 1773134743892
+
+POST /parabank/services/ParaBank HTTP/1.1
+host: localhost:9140
+content-type: text/xml; charset=UTF-8
+content-length: 365
+soapaction: ""
+
+<?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><SOAP-ENV:Body><getAccount xmlns="http://service.parabank.parasoft.com/"><accountId>13011</accountId></getAccount></SOAP-ENV:Body></SOAP-ENV:Envelope>
+--OgE9YsTdtrIzvEgpBrH2OWiHnqcn1w
+Content-Type: text/plain; charset=UTF-8
+Dest-Address: 127.0.0.1:61950
+Secure: true
+Source-Address: localhost:10443
+Timestamp: 1773134743930
+
+HTTP/1.1 200 
+Content-Type: text/xml;charset=UTF-8
+Content-Length: 325
+Date: Tue, 10 Mar 2026 09:25:43 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:getAccountResponse xmlns:ns2="http://service.parabank.parasoft.com/"><ns2:account><id>13011</id><customerId>12212</customerId><type>CHECKING</type><balance>100.00</balance></ns2:account></ns2:getAccountResponse></soap:Body></soap:Envelope>
+--OgE9YsTdtrIzvEgpBrH2OWiHnqcn1w
+Content-Type: text/plain; charset=UTF-8
+Dest-Address: localhost:10443
+Secure: true
+Source-Address: 127.0.0.1:62045
+Timestamp: 1773134769262
+
+POST /parabank/services/ParaBank HTTP/1.1
+host: localhost:9140
+content-type: text/xml; charset=UTF-8
+content-length: 365
+soapaction: ""
+
+<?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><SOAP-ENV:Body><getAccount xmlns="http://service.parabank.parasoft.com/"><accountId>12345</accountId></getAccount></SOAP-ENV:Body></SOAP-ENV:Envelope>
+--OgE9YsTdtrIzvEgpBrH2OWiHnqcn1w
+Content-Type: text/plain; charset=UTF-8
+Dest-Address: 127.0.0.1:62045
+Secure: true
+Source-Address: localhost:10443
+Timestamp: 1773134771113
+
+HTTP/1.1 200 
+Content-Type: text/xml;charset=UTF-8
+Content-Length: 327
+Date: Tue, 10 Mar 2026 09:26:11 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ns2:getAccountResponse xmlns:ns2="http://service.parabank.parasoft.com/"><ns2:account><id>12345</id><customerId>12212</customerId><type>CHECKING</type><balance>-2300.00</balance></ns2:account></ns2:getAccountResponse></soap:Body></soap:Envelope>
+--OgE9YsTdtrIzvEgpBrH2OWiHnqcn1w

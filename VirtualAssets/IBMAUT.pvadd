@@ -1,0 +1,20 @@
+<stub version="1" id="a2de6219-8105-4771-a3db-10851aa247d0-1790567167423" enabled="true" description="" lastModifiedBy="greddy" location="IBMAUT.pva" path="/IBMAUT"><jms providerURL="" initialContext="" useReplyTo="false" type="Publish-and-Subscribe" messageSelector="" queueConnectionFactory="" destinationQueue="" replyToQueue="" topicConnectionFactory="" publishTopic="" subscribeTopic="" username="" password="" workerCount="1">
+<jmsProperties>
+</jmsProperties>
+<jmsSharedSettings xmlVersion="5" productVersion="0">
+ <JMSSharedSettings className="com.parasoft.net.jms.JMSSharedSettings" version="1.1">
+  <putConnectionId>null</putConnectionId>
+  <getConnectionId>null</getConnectionId>
+ </JMSSharedSettings>
+</jmsSharedSettings></jms><mq queueManager="" channel="" putQueue="AUT.QUEUE2" getQueue="AUT.QUEUE1" mq_host="" applicationIdData="" mq_port="1414" useReplyTo="true" username="" password="AA==" ccdtFile="" settingsMode="default" useSSL="false" sslCipherSuite="" sslPeerName="" sslKeyStoreLocation="" sslKeyStoreType="" sslKeyStorePassword="AA==" sslTrustAll="false" sslTrustStoreLocation="" sslTrustStoreType="" sslTrustStorePassword="AA==" workerCount="1"><mqSharedSettings xmlVersion="5" productVersion="0">
+ <MQSharedSettings className="com.parasoft.net.mq.MQSharedSettings" version="1.1">
+  <putManagerId>b9f61b74-65f6-43d4-8988-b25a0a58b9aa-1770375400274</putManagerId>
+  <getManagerId>b9f61b74-65f6-43d4-8988-b25a0a58b9aa-1770375400274</getManagerId>
+ </MQSharedSettings>
+</mqSharedSettings></mq><custom selected="0"><listener className="com.parasoft.virtualize.listener.iso8583.JPOSListener" name="ISO 8583 Message Listener" version="0"><field id="channel_name" value=""/><field id="headerLength" value=""/><field id="host" value=""/><field id="packager_name" value=""/><field id="packager_path" value=""/><field id="port" value=""/><field id="timeout" value=""/></listener></custom><performanceConfiguration xmlVersion="5" productVersion="0">
+ <StubPerformanceConfiguration className="com.parasoft.stub.deployment.StubPerformanceConfiguration" version="1.2">
+ </StubPerformanceConfiguration>
+</performanceConfiguration><dataGroupsConfigurations xmlVersion="5" productVersion="0">
+ <StubDataGroupsConfiguration className="com.parasoft.stub.deployment.StubDataGroupsConfiguration" version="1.2">
+ </StubDataGroupsConfiguration>
+</dataGroupsConfigurations></stub>

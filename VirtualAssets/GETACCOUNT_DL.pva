@@ -1,0 +1,874 @@
+---
+parasoftVersion: 2025.3.0
+productVersion: 10.7.4
+schemaVersion: 11
+suite:
+  $type: TestSuite
+  name: GETACCOUNT_DL
+  hasEnvironmentConfig: true
+  lastModifiedBy: greddy
+  performance:
+    groups:
+    - id: 1
+      name: GETACCOUNT_DL
+  dataSources:
+  - id: ds_1771585762374_1721813426
+    impl:
+      $type: Repository
+      cacheEnabled: false
+      dataSetName: getAccount
+      config:
+        $type: MongoDataRepositoryConfiguration
+        secure: "true"
+        id: null
+        host: localhost
+        port: 2424
+        db: AccountDetails_DL
+        username: AwAAABh5dVk5bkR2SlJ3Y1VkRVUxN1F4bEhRPT0=
+        password: AwAAABh5dVk5bkR2SlJ3Y1VkRVUxN1F4bEhRPT0=
+    name: getAccount
+    useAllRows: true
+  tests:
+  - $type: ClientTesterTest
+    name: getAccount
+    testID: 1
+    performanceGroup: 1
+    tool:
+      $type: MessageResponder
+      dataSourceNames:
+      - getAccount
+      iconName: TestClient
+      name: getAccount
+      scpKeys:
+      - name: conversationID
+        value:
+          fixedValue:
+            $type: StringTestValue
+      wsaKeys:
+      - name: MessageID
+        value:
+          values:
+          - $type: MessageIDTestValue
+          fixedValue:
+            $type: StringTestValue
+      outputTools:
+      - $type: CustomTool
+        dataSourceNames:
+        - getAccount
+        enabled: false
+        allowToolbar: false
+        iconName: DefaultTool
+        name: Data Learning Tool
+        config:
+          $type: CustomToolConfiguration
+          ConfigClassName: com.parasoft.soavirt.tool.datalearningtool.DataLearningTool
+          values:
+            customValueMap:
+            - character_encoding
+            - $type: MultiValueCustomValue
+            - data_reuse
+            - $type: MultiValueCustomValue
+            - dr_host
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: localhost
+            - dr_name
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: AccountDetails_DL
+            - dr_password
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: PasswordTestValue
+                  password: AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=
+            - dr_port
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: 2424
+            - dr_username
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: admin
+            - filename_pattern
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: DL_Proxy.txt
+            - host
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: localhost
+            - local_dir
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: C:\Users\greddy\parasoft\demo\VirtualAssets\recorded_traffic
+            - log_level
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: 4
+            - password
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: PasswordTestValue
+                  password: AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=
+            - port
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: 9080
+            - remote_server
+            - $type: MultiValueCustomValue
+            - server_dir
+            - $type: MultiValueCustomValue
+            - template_file
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: C:\Users\greddy\parasoft\demo\VirtualAssets\traffic_templates\GetAccount.traffictemplate
+            - username
+            - $type: MultiValueCustomValue
+              value:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: StringTestValue
+                  value: admin
+          className: com.parasoft.soavirt.tool.datalearningtool.DataLearningTool
+          name: Data Learning Tool
+      preRequestHeader:
+        $type: NamedToolOutputProvider
+        menuName: Transport Header
+        name: Pre-correlation Incoming Transport Header
+      xmlPreRequestOutput:
+        $type: NamedXMLToolOutputProvider
+        menuName: Payload
+        name: Pre-correlation Incoming Request
+      preRequestAttachmentOutputProvider:
+        menuName: Attachment
+        name: Pre-correlation Incoming Attachment
+      jmsOutputProvider:
+        $type: JMSOutputProvider
+        name: Incoming JMS Message
+        menuName: Incoming JMS Message
+      attachmentOutputProvider:
+        menuName: Attachment
+        name: Incoming Attachment
+      requestHeader:
+        $type: NamedToolOutputProvider
+        menuName: Transport Header
+        name: Incoming Transport Header
+      responseHeader:
+        $type: NamedToolOutputProvider
+        menuName: Transport Header
+        name: Outgoing Transport Header
+      xmlResponseOutput:
+        $type: ResponderXMLToolOutputProvider
+        outputTools:
+        - $type: CustomTool
+          dataSourceNames:
+          - getAccount
+          allowToolbar: false
+          iconName: DefaultTool
+          name: Data Learning Tool
+          config:
+            $type: CustomToolConfiguration
+            ConfigClassName: com.parasoft.soavirt.tool.datalearningtool.DataLearningTool
+            values:
+              customValueMap:
+              - character_encoding
+              - $type: MultiValueCustomValue
+              - data_reuse
+              - $type: MultiValueCustomValue
+              - dr_host
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: localhost
+              - dr_name
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: AccountDetails_DL
+              - dr_password
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: PasswordTestValue
+                    password: AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=
+              - dr_port
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: 2424
+              - dr_username
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: admin
+              - filename_pattern
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: DL_Proxy.txt
+              - host
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: localhost
+              - local_dir
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: C:\Users\greddy\parasoft\demo\VirtualAssets\recorded_traffic
+              - log_level
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: 4
+              - password
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: PasswordTestValue
+                    password: AwAAABh0SEJJU3JQcnhjODNQOEJwNXJlb3N3PT0=
+              - port
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: 9080
+              - remote_server
+              - $type: MultiValueCustomValue
+              - server_dir
+              - $type: MultiValueCustomValue
+              - template_file
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: C:\Users\greddy\parasoft\demo\VirtualAssets\traffic_templates\GetAccount.traffictemplate
+              - username
+              - $type: MultiValueCustomValue
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: admin
+            className: com.parasoft.soavirt.tool.datalearningtool.DataLearningTool
+            name: Data Learning Tool
+        menuName: Payload
+        name: Outgoing Response
+      trafficObjectOutput:
+        $type: ObjectOutputProvider
+        name: Traffic Object
+      protocol: 6
+      mode: 1
+      timeout: 30
+      dsXmlCorrelations:
+      - $type: XMLDataSourceCorrelation
+        xPathExpressions:
+        - "/*[local-name(.)=\"Envelope\"]/*[local-name(.)=\"Body\"]/*[local-name(.)=\"\
+          getAccount\"]/*[local-name(.)=\"accountId\"]"
+        columnName: accountId
+      fileResponderExcludes:
+        properties:
+        - $type: StringNameValuePair
+          name: '*'
+          value:
+            fixedValue:
+              $type: StringTestValue
+              value: "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]{1,3})?(([+-][0-9]{2}:[0-9]{2})|Z)?"
+          string: ""
+      fileResponderCacheUUID: e0e6e5a7-3717-4358-8168-93308787cb7f
+      incomingConversionDelegate:
+        conversionOptions:
+          options:
+          - normalizeSpace
+          - "false"
+        requestConvertPayloadOption: CONVERT
+      hasServiceInfo: true
+      serviceInfo:
+        serviceDescriptor:
+          $type: StandardServiceDescriptor
+          location: ""
+      poxFormInputValue:
+        value:
+          $type: ElementValue
+          writeType: true
+          type:
+            $type: ElementType
+            localName: ""
+            bodyType:
+              $type: ComplexType
+              name: anonymous
+              compositor: true
+              compositorObj:
+                $type: SequenceCompositor
+          replacedColumn: ""
+          values:
+          - $type: ComplexValue
+            replacedColumn: ""
+            compositorValue: true
+            compositorValueObj:
+              replacedColumn: ""
+              values:
+                $type: CompositorValueSetCollectionSet
+                set:
+                - $type: CompositorValueSet
+      messageForwardProvider:
+        $type: MessageForwardOutputProvider
+        menuName: Traffic
+        name: Traffic
+      clientTesterSoapCall: true
+      soapCall:
+        $type: ClientTesterSoapCall
+        soapMethod: true
+        soapMethodObj:
+          soapParameters:
+          - value:
+              $type: ElementValue
+              writeType: true
+              type:
+                $type: ElementType
+                namespace: http://service.parabank.parasoft.com/
+                localName: getAccountResponse
+                bodyType:
+                  $type: ComplexType
+                  namespace: http://service.parabank.parasoft.com/
+                  name: getAccountResponseType
+                  compositor: true
+                  compositorObj:
+                    $type: SequenceCompositor
+                    types:
+                    - $type: ElementType
+                      namespace: http://service.parabank.parasoft.com/
+                      localName: account
+                      bodyType:
+                        $type: ComplexType
+                        namespace: http://service.parabank.parasoft.com/
+                        name: accountType
+                        compositor: true
+                        compositorObj:
+                          $type: SequenceCompositor
+                          types:
+                          - $type: ElementType
+                            localName: id
+                            bodyType:
+                              $type: StringType
+                              _id: 1
+                          - $type: ElementType
+                            localName: customerId
+                            bodyType:
+                              $type: StringType
+                              _ref: 1
+                          - $type: ElementType
+                            localName: type
+                            bodyType:
+                              $type: StringType
+                              _ref: 1
+                          - $type: ElementType
+                            localName: balance
+                            bodyType:
+                              $type: StringType
+                              _ref: 1
+              replacedColumn: ""
+              values:
+              - $type: ComplexValue
+                replacedColumn: ""
+                compositorValue: true
+                compositorValueObj:
+                  replacedColumn: ""
+                  values:
+                    $type: CompositorValueSetCollectionSet
+                    set:
+                    - $type: CompositorValueSet
+                      values:
+                      - $type: ElementValue
+                        replacedColumn: ""
+                        mode: 3
+                        columnName: account
+                        values:
+                        - $type: ComplexValue
+                          replacedColumn: ""
+                          compositorValue: true
+                          compositorValueObj:
+                            replacedColumn: ""
+                            values:
+                              $type: CompositorValueSetCollectionSet
+                              set:
+                              - $type: CompositorValueSet
+                                values:
+                                - $type: ElementValue
+                                  replacedColumn: ""
+                                  values:
+                                  - $type: StringValue
+                                    replacedColumn: ""
+                                    mode: 3
+                                    columnName: id
+                                    value: ""
+                                - $type: ElementValue
+                                  replacedColumn: ""
+                                  values:
+                                  - $type: StringValue
+                                    replacedColumn: ""
+                                    mode: 3
+                                    columnName: customerId
+                                    value: ""
+                                - $type: ElementValue
+                                  replacedColumn: ""
+                                  values:
+                                  - $type: StringValue
+                                    replacedColumn: ""
+                                    mode: 3
+                                    columnName: type
+                                    value: ""
+                                - $type: ElementValue
+                                  replacedColumn: ""
+                                  values:
+                                  - $type: StringValue
+                                    replacedColumn: ""
+                                    mode: 3
+                                    columnName: balance
+                                    value: ""
+            name: ""
+          beautify: false
+          longName: getAccount
+          styleUseProperties:
+            targetObjectURI: http://schema
+          serviceAddress:
+            $type: SOAPServiceAddress
+            address: ""
+          methodName: getAccount
+        inputMode: 1
+        inputUsable: true
+        literal:
+          use: 1
+          text:
+            ClientTester_LiteralMessage: "<?xml version=\"1.0\" encoding=\"UTF-8\"\
+              ?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\"\
+              \ xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+              ><SOAP-ENV:Body><getAccountResponse xmlns=\"http://service.parabank.parasoft.com/\"\
+              ><account ParasoftColumn=\"account\"><id xmlns=\"\">${id}</id><customerId\
+              \ xmlns=\"\">${customerId}</customerId><type xmlns=\"\">${type}</type><balance\
+              \ xmlns=\"\">${balance}</balance></account></getAccountResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+            type: text/xml
+        userMethod: true
+        xmlBuilder: true
+        formXML:
+          rootNodeExists: true
+          rootNode:
+            $type: XMLElementNode
+            value: ""
+            name: Envelope
+            namespace: true
+            prefix: SOAP-ENV
+            uri: http://schemas.xmlsoap.org/soap/envelope/
+            childNodes:
+            - $type: XMLNamespaceNode
+              prefix: SOAP-ENV
+              uri: http://schemas.xmlsoap.org/soap/envelope/
+            - $type: XMLNamespaceNode
+              prefix: xsd
+              uri: http://www.w3.org/2001/XMLSchema
+            - $type: XMLNamespaceNode
+              prefix: xsi
+              uri: http://www.w3.org/2001/XMLSchema-instance
+            - $type: XMLElementNode
+              value: ""
+              name: Body
+              namespace: true
+              prefix: SOAP-ENV
+              uri: http://schemas.xmlsoap.org/soap/envelope/
+              childNodes:
+              - $type: XMLElementNode
+                value: ""
+                name: getAccountResponse
+                namespace: true
+                prefix: ""
+                uri: http://service.parabank.parasoft.com/
+                childNodes:
+                - $type: XMLNamespaceNode
+                  prefix: ""
+                  uri: http://service.parabank.parasoft.com/
+                - $type: XMLElementNode
+                  value: ""
+                  name: account
+                  namespace: true
+                  prefix: ""
+                  uri: http://service.parabank.parasoft.com/
+                  childNodes:
+                  - $type: XMLAttributeNode
+                    value: account
+                    name: ParasoftColumn
+                  - $type: XMLElementNode
+                    valueSelection: 2
+                    valueColumnName: id
+                    value: "${id}"
+                    name: id
+                    childNodes:
+                    - $type: XMLNamespaceNode
+                      prefix: ""
+                      uri: ""
+                  - $type: XMLElementNode
+                    valueSelection: 2
+                    valueColumnName: customerId
+                    value: "${customerId}"
+                    name: customerId
+                    childNodes:
+                    - $type: XMLNamespaceNode
+                      prefix: ""
+                      uri: ""
+                  - $type: XMLElementNode
+                    valueSelection: 2
+                    valueColumnName: type
+                    value: "${type}"
+                    name: type
+                    childNodes:
+                    - $type: XMLNamespaceNode
+                      prefix: ""
+                      uri: ""
+                  - $type: XMLElementNode
+                    valueSelection: 2
+                    valueColumnName: balance
+                    value: "${balance}"
+                    name: balance
+                    childNodes:
+                    - $type: XMLNamespaceNode
+                      prefix: ""
+                      uri: ""
+        formJsonResource:
+          httpMethod: GET
+        formJson:
+          value:
+            $type: ElementValue
+            writeType: true
+            type:
+              $type: ElementType
+              localName: root
+              bodyType:
+                $type: ComplexType
+                attributes:
+                - ns: ""
+                  name: type
+                  fixed: object
+                  contentType:
+                    $type: StringType
+                  required: true
+                name: rootType
+                compositor: true
+                compositorObj:
+                  $type: AllCompositor
+            replacedColumn: ""
+            values:
+            - $type: ComplexValue
+              replacedColumn: ""
+              attributes:
+              - replacedColumn: ""
+                value:
+                  $type: StringValue
+                  replacedColumn: ""
+                  value: object
+                useValue: true
+              compositorValue: true
+              compositorValueObj:
+                replacedColumn: ""
+                values:
+                  $type: CompositorValueSetCollectionSet
+                  set:
+                  - $type: CompositorValueSet
+          elementTypeName: root
+        jsonBuilder:
+          hasValue: true
+          value:
+            $type: JSONObjectValue
+            nameIsNull: true
+      customCorrelationCondition:
+        $type: UserMethodCorrelationCondition
+        enableCorrelation: false
+      correlationConditionSet:
+        conditions:
+        - false
+        - $type: HttpMethodsCorrelationCondition
+          enableCorrelation: false
+          matchList: ""
+        - false
+        - $type: UrlPathCorrelationCondition
+        - false
+        - $type: UrlParamCorrelationCondition
+          enableCorrelation: false
+        - false
+        - $type: HeaderCorrelationCondition
+          enableCorrelation: false
+        - false
+        - $type: XMLMessageCorrelationCondition
+          xPathExpressions:
+          - "local-name(/*/*[local-name(.)=\"Body\"]/*)=\"getAccount\""
+      serviceOptions:
+        requestDateTemplate:
+          string: 2026-02-20T16:36:46.000+0530
+        requestURLTemplate:
+          string: /parabank/services/ParaBank
+        failoverOptions:
+          bool: true
+        responseHeaderTemplate:
+          template: ""
+        requestHeaderTemplate:
+          response: false
+          template: ""
+        requestMessageTemplate:
+          response: false
+          template: |-
+            <?xml version="1.0" encoding="UTF-8"?>
+            <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+             <SOAP-ENV:Body>
+              <getAccount xmlns="http://service.parabank.parasoft.com/">
+               <accountId>12345</accountId>
+              </getAccount>
+             </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+        responseMessageTemplate:
+          template: ""
+        applyIncomingRequestToolsBeforeCorrelation:
+          bool: true
+        stubHeaderProperties:
+          headers:
+          - $type: StubHTTPHeader
+            headers:
+              properties:
+              - name: Content-Type
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+                    value: text/xml;charset=UTF-8
+              - name: Keep-Alive
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+                    value: timeout=20
+              - name: Server
+                value:
+                  values:
+                  - $type: ScriptedValue
+                  fixedValue:
+                    $type: StringTestValue
+                    value: SV_Server
+          - $type: StubJMSHeader
+          - $type: StubMQHeader
+            mqrfh2fields:
+              version:
+                name: Version
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              encoding:
+                name: Encoding
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              codedCharSetId:
+                name: CodedCharSetId
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              format:
+                name: Format
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              flags:
+                name: Flags
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              nameValueCodedCharSetId:
+                name: NameValueCodedCharSetId
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+            mcd:
+              msd:
+                name: Message Service Domain
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              set:
+                name: Message Set
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              type:
+                name: Message Type
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              fmt:
+                name: Output Format
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+            psc:
+              subIdentity:
+                name: SubIdentity
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              qName:
+                name: QName
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              qMgrName:
+                name: QMgrName
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              subPoint:
+                name: SubPoint
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              filter:
+                name: Filter
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              subName:
+                name: SubName
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              subUserData:
+                name: SubUserData
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+            jms:
+              destination:
+                name: Destination
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              replyTo:
+                name: Reply To
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              timestamp:
+                name: Timestamp
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              expiration:
+                name: Expiration
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              correlationId:
+                name: Correlation Id
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              priority:
+                name: Priority
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+              deliveryMode:
+                name: Delivery Mode
+                value:
+                  fixedValue:
+                    $type: StringTestValue
+        msgPattern:
+          bool: true
+        returnStatusOptions:
+          returnStatus:
+            name: ""
+            value:
+              fixedValue:
+                $type: StringTestValue
+                value: 500
+        timeOptions:
+          thinkTime:
+            name: ""
+            value:
+              values:
+              - $type: ScriptedValue
+              fixedValue:
+                $type: StringTestValue
+                value: 0
