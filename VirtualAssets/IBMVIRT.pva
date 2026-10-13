@@ -317,7 +317,7 @@ suite:
         conditions:
         - false
         - $type: HttpMethodsCorrelationCondition
-          matchList: HEAD|PUT
+          matchList: PUT
         - false
         - $type: UrlPathCorrelationCondition
           enableCorrelation: false
