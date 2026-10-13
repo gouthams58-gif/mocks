@@ -1,12 +1,12 @@
 ---
-parasoftVersion: 2026.1.2
+parasoftVersion: 2026.1.0
 productVersion: 10.7.5
 schemaVersion: 13
 suite:
   $type: TestSuite
   name: Responder Suite
   hasEnvironmentConfig: true
-  lastModifiedBy: brajagopal
+  lastModifiedBy: greddy
   tests:
   - $type: ClientTesterTest
     name: Literal Message Responder
@@ -84,8 +84,6 @@ suite:
         serviceDescriptor:
           $type: StandardServiceDescriptor
           location: ""
-        serviceName: ""
-        versionName: ""
       poxFormInputValue:
         value:
           $type: ElementValue
@@ -319,8 +317,7 @@ suite:
         conditions:
         - false
         - $type: HttpMethodsCorrelationCondition
-          enableCorrelation: false
-          matchList: ""
+          matchList: PUT
         - false
         - $type: UrlPathCorrelationCondition
           enableCorrelation: false
